@@ -20,7 +20,7 @@ resource "proxmox_vm_qemu" "gitlab_runner" {
   cicustom   = "vendor=local:snippets/dnf_template.yaml"
   ciupgrade  = true
   nameserver = "192.168.0.1"
-  ipconfig0  = "ip=192.168.1.129/24,gw=192.168.0.1"
+  ipconfig0  = "ip=192.168.0.129/24,gw=192.168.0.1"
   skip_ipv6  = true
   # almalinux is the default user: https://wiki.almalinux.org/cloud/Generic-cloud-on-local.html#cloud-init
   ciuser  = "almalinux"
@@ -42,7 +42,7 @@ resource "proxmox_vm_qemu" "gitlab_runner" {
         disk {
           storage = "local-lvm"
           # The size of the disk should be at least as big as the disk in the template. If it's smaller, the disk will be recreated
-          size       = "256G"
+          size       = "128G"
           discard    = true
           emulatessd = true
           iothread   = true
