@@ -146,9 +146,9 @@ resource "proxmox_vm_qemu" "k8s_cp_2" {
 
 resource "proxmox_vm_qemu" "k8s_cp_3" {
   # VM Template to clone from
-  clone            = "almalinux-9-6-x86-64-cloudinit"
-  scsihw           = "virtio-scsi-single"
-  boot             = "order=scsi0"
+  clone  = "almalinux-9-6-x86-64-cloudinit"
+  scsihw = "virtio-scsi-single"
+  boot   = "order=scsi0"
 
   # General configuration
   target_node      = "pve2"
@@ -165,12 +165,12 @@ resource "proxmox_vm_qemu" "k8s_cp_3" {
   # Cloud-Init configuration
   cicustom   = "vendor=local:snippets/dnf_template.yaml"
   ciupgrade  = true
-  nameserver = "192.168.0.1"                        
-  ipconfig0  = "ip=192.168.0.133/24,gw=192.168.0.1" 
+  nameserver = "192.168.0.1"
+  ipconfig0  = "ip=192.168.0.133/24,gw=192.168.0.1"
   skip_ipv6  = true
   # almalinux is the default user: https://wiki.almalinux.org/cloud/Generic-cloud-on-local.html#cloud-init
-  ciuser     = "almalinux" 
-  sshkeys    = var.ci_authorized_sshkey
+  ciuser  = "almalinux"
+  sshkeys = var.ci_authorized_sshkey
 
   cpu {
     cores = 4
